@@ -3,7 +3,6 @@ use std::{
     fs::File,
     io::{BufReader, Read},
 };
-
 pub struct ApiStruct {
     api_version: String,
     swagger_version: String,
@@ -28,11 +27,11 @@ pub fn get_code(_opts: ApiStruct) -> String {
     code
 }
 
-fn get_view_for_swagger2() -> Result<String, io::Error> {
-    let file = File::open("src/templates/data.mustache");
+pub fn get_view_for_swagger2() -> Result<String, io::Error> {
+    let file = File::open("src/templates/data.mustache").unwrap();
     let mut buf_reader = BufReader::new(file);
 
     let mut contents = String::new();
-    buf_reader.read_to_string(&mut contents)?;
-    Ok(contents);
+    buf_reader.read_to_string(&mut contents).unwrap();
+    Ok(contents)
 }
