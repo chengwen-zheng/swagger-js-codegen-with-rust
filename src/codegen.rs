@@ -1,3 +1,4 @@
+use std::io;
 use std::{
     fs::File,
     io::{BufReader, Read},
@@ -27,11 +28,11 @@ pub fn get_code(_opts: ApiStruct) -> String {
     code
 }
 
-fn get_view_for_swagger2(_swagger: Swagger) -> std::io::Result<()> {
-    let file = File::open("foo.txt")?;
+fn get_view_for_swagger2() -> Result<String, io::Error> {
+    let file = File::open("src/templates/data.mustache");
     let mut buf_reader = BufReader::new(file);
 
     let mut contents = String::new();
-    buf_reader.read_to_string(&mut contents);
-    Ok(())
+    buf_reader.read_to_string(&mut contents)?;
+    Ok(contents);
 }
