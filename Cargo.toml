@@ -7,5 +7,9 @@ edition = "2021"
 [[example]]
 name = "rendering"
 
+[[example]]
+name = "serdedemo"
+
 [dependencies]
 rustache = "^0.1"
+serde_json = "1.0"
